@@ -1,1 +1,32 @@
-<h1>トップページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sx-2">
+      <%= render 'layouts/genre_search_sidebar', genres: @genres %>
+    </div>           
+      <div class="col-sm col-sx-10">
+        <div>
+          <p>ようこそ、ながのCAKEへ！</p>
+          <p>このサイトは、ケーキ販売のECサイトになります。</p>
+          <p>会員ではない方も商品の閲覧はできますが、</p>            
+          <p>購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+      
+       <div class="col-sm col-sx-10">
+        <h2><strong>新着商品</strong></h2>
+       </div>
+        
+          <div class=" col-sm col-sx-3">
+            <%#= @items.each do |item| %>        
+              <%#= link to public_item_path (public.item.id) %>
+               <%#= attachment_image_tag item, :image, format: 'jpg', class: "pull-left img-responsive", fallback: 'logo.png', size: '180x180' %>
+               <%#= item.name %><br>
+               <%#= item.price %>
+               <%# end %>
+          </div>
+          <div class="nav-links">
+            <%#= link to "全ての商品を見る", public_items_path %>
+          </div>
+
+  </div>
+</div>
