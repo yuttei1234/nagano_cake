@@ -13,5 +13,35 @@
  *= require_tree .
  *= require_self
  */
- 
+
  @import "bootstrap";
+ 
+ .logintitle {
+   margin: 20px 20px 30px 0;
+ }
+
+ .emailaddress {
+   margin-right: 20px;
+ }
+
+ .passinfo {
+   margin-right: 50px;
+ }
+
+.input-data {
+  margin-left: 10px;
+}
+
+.log-in {
+  margin-top: 20px;
+}
+
+.bg-test_text {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
+
+.login-subtitle {
+margin-right: 50px;
+}

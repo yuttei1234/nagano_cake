@@ -23,32 +23,26 @@
             </a>
             <% end %>
 
-            </nav>
-
-          <nav>
-            <ul class="navbar-nav navbar-right">
-
-              <% if request.url.include? ('admin') %>
-
+          <nav class="navbar">
+            <ul class="navbar-nav bg-test_text">
               <%#以下、管理者がログインした場合%>
                 <% if admin_signed_in? %>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " 商品一覧", admin_items_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " 会員一覧", admin_customers_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " 注文履歴一覧", admin_admin_order_details_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " ジャンル一覧", admin_genres_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
                   </li>
                   
-              <% if request.url.include? ('customer') %>                  
                   <%#以下、会員がログインした場合%>
                   <% elsif customer_signed_in? %>
                   <li>
@@ -69,24 +63,21 @@
 
                   <%#以下、管理者/会員がログインしていない場合%>
                   <% else %>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " About", homes_about_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " 商品一覧", public_items_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " 新規登録", new_customer_registration_path, class: "nav-link bg-light text-dark" %>
                   </li>
-                  <li class="nav-list">
+                  <li>
                     <%= link_to " ログイン", new_customer_session_path, class: "nav-link bg-light text-dark" %>
                   </li>
                   <% end %>
-                <% end %>
-              <% end %>    
             </ul>
           </nav>
-
       </nav>
     </div>         
   </header>
