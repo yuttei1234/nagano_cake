@@ -3,22 +3,22 @@
     <div class="col-sx-2 mr-4">
       <%= render 'layouts/genre_search_sidebar', genres: @genres %>
     </div>           
-      <div class="col-sm col-sx-10">
+      <div class="col-sm col-sx-10 mt-5">
         <div class="center-block">
-          <p>ようこそ、ながのCAKEへ！</p>
-          <p>このサイトは、ケーキ販売のECサイトになります。</p>
-          <p>会員ではない方も商品の閲覧はできますが、</p>            
-          <p>購入には会員登録が必要になります。</p>
+          <p class="text-center">ようこそ、ながのCAKEへ！</p>
+          <p class="text-center">このサイトは、ケーキ販売のECサイトになります。</p>
+          <p class="text-center">会員ではない方も商品の閲覧はできますが、</p>            
+          <p class="text-center">購入には会員登録が必要になります。</p>
         </div>
       </div>
-      
-       <div class="row">
+    </div>
+    
+       <div class="row mt-5 align-text-top">
          <div>
             <h2><strong>新着商品</strong></h2>           
          </div>
-       </div>
-        
-          <div class=" col-sm col-sx-3">
+         
+          <div class="col-sm col-sx-3">
             <%#= @items.each do |item| %>        
               <%#= link to public_item_path (public.item.id) %>
                <%#= attachment_image_tag item, :image, format: 'jpg', class: "pull-left img-responsive", fallback: 'logo.png', size: '180x180' %>
@@ -26,9 +26,9 @@
                <%#= item.price %>
                <%# end %>
           </div>
-          <div class="nav-links">
+          <div class="nav-links float-right">
             <%= link_to "全ての商品を見る > ", public_items_path %>
           </div>
 
-  </div>
+      </div>
 </div>

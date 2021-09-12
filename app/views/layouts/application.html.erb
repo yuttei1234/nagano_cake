@@ -9,9 +9,10 @@
   </head>
 
   <body>
-    <header class-"navbar navbar-fixed-top header">
-      <div class="container">  
-        <nav class="navbar navbar-light navbar-left">
+    <header>
+      <nav class="navbar navbar-expand">
+        <div class="container">  
+          <nav class="navbar navbar-light navbar-left">
 
           <% if request.url.include?('admin')  %>
             <a href="/admin">
@@ -22,22 +23,22 @@
               <%= image_tag 'logo.png', size:'300x80' %>
             </a>
             <% end %>
-
-          <nav class="navbar">
+      </nav>
+      
             <ul class="navbar-nav bg-test_text">
               <%#以下、管理者がログインした場合%>
                 <% if admin_signed_in? %>
                   <li>
-                    <%= link_to " 商品一覧", admin_items_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " 商品一覧", admin_items_path, class: "nav-link bg-light text-dark header-tab" %>
                   </li>
                   <li>
-                    <%= link_to " 会員一覧", admin_customers_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " 会員一覧", admin_customers_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li>
-                    <%= link_to " 注文履歴一覧", admin_admin_order_details_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " 注文履歴一覧", admin_admin_order_details_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li>
-                    <%= link_to " ジャンル一覧", admin_genres_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " ジャンル一覧", admin_genres_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li>
                     <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
@@ -49,39 +50,37 @@
                     ようこそ、<%= current_customer.fisrt name %>さん！
                   </li>
                   <li class="nav-list">
-                    <%= link_to " マイページ", public_customer_path(current_customer.id), class: "nav-link bg-light text-dark" %>
+                    <%= link_to " マイページ", public_customer_path(current_customer.id), class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li class="nav-list">
-                    <%= link_to " 商品一覧", public_items_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " 商品一覧", public_items_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li class="nav-list">
-                    <%= link_to " カート", public_cart_items_path, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " カート", public_cart_items_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <li class="nav-list">
-                    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link bg-light text-dark" %>
+                    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
 
                   <%#以下、管理者/会員がログインしていない場合%>
                   <% else %>
-                  <li>
-                    <%= link_to " About", homes_about_path, class: "nav-link bg-light text-dark" %>
+                  <li class="nav-item">
+                    <%= link_to " About", homes_about_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
-                  <li>
-                    <%= link_to " 商品一覧", public_items_path, class: "nav-link bg-light text-dark" %>
+                  <li class="nav-item">
+                    <%= link_to " 商品一覧", public_items_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
-                  <li>
-                    <%= link_to " 新規登録", new_customer_registration_path, class: "nav-link bg-light text-dark" %>
+                  <li class="nav-item">
+                    <%= link_to " 新規登録", new_customer_registration_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
-                  <li>
-                    <%= link_to " ログイン", new_customer_session_path, class: "nav-link bg-light text-dark" %>
+                  <li class="nav-item">
+                    <%= link_to " ログイン", new_customer_session_path, class: "nav-link bg-light text-dark btn btn-light header-tab" %>
                   </li>
                   <% end %>
             </ul>
-          </nav>
+        </div>
       </nav>
-    </div>         
-  </header>
-
+    </header>
     <%= yield %>
   </body>
 </html>

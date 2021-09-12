@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-sx-6 cetner-block">
+    <div class="col-md-12 cetner-block">
 
-    <h3 class="text-center bg-light logintitle w-75">ログイン</h3>
+    <h3 class="text-center logintitle text-background">ログイン</h3>
 
-        <p class="text-center bg-light login-subtitle">会員の方はこちらからログイン</p>
+        <p class="text-center login-subtitle text-background">会員の方はこちらからログイン</p>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="text-left">
+          <div class="text-center">
             <%= f.label :email, "メールアドレス", class:"emailaddress" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-data" %>
           </div>
           <br>
 
-          <div class="text-left">
+          <div class="text-center">
             <%= f.label :password, "パスワード", class:"passinfo" %>
             <%= f.password_field :password, autocomplete: "current-password", class:"input-data" %>
           </div>
@@ -24,8 +24,8 @@
           <br>
         <% end %>
 
-        <p class="text-center bg-light login-subtitle">会員登録がお済みでない方</p>
-        <p class="text-center"><%= link_to"こちら",new_customer_registration_path %>から新規登録を行って下さい。</p>
+        <p class="text-center login-subtitle text-background">会員登録がお済みでない方</p>
+        <p class="text-center new-registration"><%= link_to"こちら",new_customer_registration_path %>から新規登録を行って下さい。</p>
     </div>
   </div>
 </div>

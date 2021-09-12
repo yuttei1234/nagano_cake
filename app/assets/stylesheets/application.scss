@@ -15,9 +15,15 @@
  */
 
  @import "bootstrap";
- 
+
+  .header-tab {
+    width: 100px;
+    margin: 20px;
+  }
+
  .logintitle {
-   margin: 20px 20px 30px 0;
+   margin-right: 750px;
+   margin-bottom: 50px;
  }
 
  .emailaddress {
@@ -30,6 +36,7 @@
 
 .input-data {
   margin-left: 10px;
+  width: 300px;
 }
 
 .log-in {
@@ -37,11 +44,18 @@
 }
 
 .bg-test_text {
-  display: inline-block;
-  width: 120px;
   text-align: center;
 }
 
 .login-subtitle {
-margin-right: 50px;
+  margin-right: 650px;
+  margin-left: 70px;
+}
+
+.text-background {
+  background-color: #c0c0c0;
+}
+
+.new-registration {
+  margin-right: 150px;
 }
