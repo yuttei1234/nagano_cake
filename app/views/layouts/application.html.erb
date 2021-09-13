@@ -47,7 +47,7 @@
                   <%#以下、会員がログインした場合%>
                   <% elsif customer_signed_in? %>
                   <li>
-                    ようこそ、<%= current_customer.fisrt name %>さん！
+                    ようこそ、<%= current_customer.first_name %>さん！
                   </li>
                   <li class="nav-list">
                     <%= link_to " マイページ", public_customer_path(current_customer.id), class: "nav-link bg-light text-dark btn btn-light header-tab" %>
