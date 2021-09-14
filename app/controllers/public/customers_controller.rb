@@ -20,15 +20,15 @@ class Public::CustomersController < ApplicationController
   end
   
   def destroy
-    customer = Customer.find(params[:id])
-    customer.destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
     redirect_to root_path
   end
   
   private
   
   def customer_params
-    params.require(:user).permit(:last_name, :fisrt_name, :kata_last_name, :kata_fisrt_name, :email, :postal_code, :address, :telephone_number)
+    params.require(:customer).permit(:last_name, :fisrt_name, :kata_last_name, :kata_fisrt_name, :email, :postal_code, :address, :telephone_number)
   end
   
 end
