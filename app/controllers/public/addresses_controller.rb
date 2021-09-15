@@ -4,7 +4,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @address = Address.find(params[:id])
+    @addresses = Address.find(params[:id])
   end
 
   def edit
