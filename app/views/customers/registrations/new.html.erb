@@ -6,7 +6,6 @@
     <div class="col-md-12">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-
         <div class="row">
           <div class="col-md-3">
             <div class="field mt-5">
@@ -58,7 +57,7 @@
               <%= f.label :password_confirmation, "パスワード(確認用)" %>
             </div>
           </div>
-          
+
           <div class="col-md-9">
             <div class="form-group content_center">
               <%= render "customers/shared/error_messages", resource: resource %>

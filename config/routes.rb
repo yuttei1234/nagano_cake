@@ -2,19 +2,19 @@ Rails.application.routes.draw do
 
   devise_for :admins, module: "admins"
   devise_for :customers, module: "customers"
-  
+
   #以下、public関連のコントローラー/アクション関係設定
-  
+
   root 'homes#top'
   get 'homes/about' => 'public/homes#about'
-  
+
   namespace :public do
 
   resources :items, only: [:index, :show]
 
   resources :customers, only: [:show, :edit, :update]do
     collection do
-      get 'unsubscribe'
+      post 'unsubscribe'
       patch 'withdraw'
     end
   end
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   #以下、admin関連のコントローラー/アクション設定
-  
+
   get '/admin', to: 'admin/#top'
   namespace :admin do
 
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get 'admin/orders' =>'orders#show'
   patch 'admin/orders' =>'orders#update'
   patch 'admin/order_details' =>'order_details#update'
-  
+
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

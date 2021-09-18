@@ -20,11 +20,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(name: params[:id])
+    @customer = Customer.find_by(id: params[:id])
   end
 
   def withdraw
-    @customer = Customer.find_by(name: params[:id])
+    @customer = Customer.find_by(id: params[:id])
     @customer.update(is_valid: false)
     reset_session
     redirect_to root_path
