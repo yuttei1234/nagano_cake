@@ -4,10 +4,10 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = Address.find(params[:id])
+    @addresses = current_customer.addresses
   end
 
-  def edit
+  def editcd
     @address = Address.find(params[:id])
   end
 

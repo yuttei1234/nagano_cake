@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="title_genre">ジャンル追加・一覧</h3>
+    </div>
+      <div class="row">
+        <div class="col-md-12 mt-5">
+          <div class="form-group form-horizontal">
+            <%= form_for(@genre, url: admin_genre_path(@genre.id)) do |f| %>          
+              <%= f.label :name, "ジャンル", class: "genre_name"  %>
+              <%= f.text_field :name, autofocus: true %>
+              <%= f.submit "変更を保存する", class: "btn btn-success genre_registration" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>
