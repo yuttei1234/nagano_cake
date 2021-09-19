@@ -1,20 +1,18 @@
 <div class="container">
   <h2>商品新規登録</h2>
-
-    <div class="row">
-      <div class="col-md-12">
-        <%= form_for(@item, url:admin_items_path) do |f| %>
-       
-        <div class="row">
-          <div class="col-md-3">
-            <div class="field mt-5">
-              <div class="form-group">
+  <%= form_for(@item, url:admin_items_path) do |f| %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="field mt-5">
+                <div class="form-group">
+                </div>
               </div>
-            </div>
-
+              
         <div class="img-fluid">
           <div class="form-group">
-            <%= f.label :image, "商品画像" %>           
+            <%= f.label :image, "商品画像" %>
           </div>
         </div>
 
@@ -29,13 +27,13 @@
             <%= f.label :introduction, "商品説明" %>
           </div>
         </div>
-        
+
         <div class="field name-left">
           <div class="form-group">
             <%= f.label :genre, "ジャンル" %>
           </div>
         </div>
-        
+
         <div class="field name-left">
           <div class="form-group">
             <%= f.label :price, "税抜価格" %>
@@ -48,30 +46,30 @@
           </div>
         </div>
       </div>
-      
+
      <div class="col-md-9">
-      <div class="field mt-5">    
+      <div class="field mt-5">
         <div class="form-group">
           <div class= "col-md-1"></div>
           <div class= "img-fluid col-md-8">
-            <%= f.attachment_field :image_id %>          
+            <%= f.attachment_field :image %>
           </div>
           </div>
         </div>
-        
+
           <div class="form-group">
         <div class= "col-md-1"></div>
           <div class= "col-md-7">
-            <%= f.text_field :name, placeholder: '商品名', class: "form-control" %>   
+            <%= f.text_field :name, placeholder: '商品名', class: "form-control" %>
           </div>
         </div>
-  
+
       <div class="form-group">
         <div class= "col-md-1"></div>
           <div class= "col-md-7">
             <%= f.text_field :introduction, placeholder: 'ここに説明文を記述します', class: "form-control" %>
         </div>
-      </div>  
+      </div>
 
       <div class="form-group">
         <div class= "col-md-1"></div>
@@ -79,14 +77,14 @@
             <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "form-control" %>
           </div>
         </div>
-  
+
       <div class="form-group">
         <div class= "col-md-1"></div>
           <div class= "col-md-7">
             <%= f.text_field :price, placeholder: '1000' %>円
         </div>
-      </div>  
- 
+      </div>
+
       <div class="form-group">
         <div class= "col-md-1"></div>
           <div class= "col-md-7">
@@ -99,17 +97,15 @@
               <label class="form-check-label" for="inlineRadio2">販売停止中</label>
             </div>
         </div>
-      </div>         
       </div>
-      </div> 
-    </div>  
-    </div>  
-    
+      </div>
+      </div>
+    </div>
+    </div>
     <div class="row">
       <div class="col-md-7">
         <%= f.submit "新規登録", class: "btn btn-success mx-auto d-block" %>
       </div>
     </div>
-    <% end %>
-
+  <% end %>
 </div>
