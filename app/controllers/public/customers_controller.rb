@@ -20,12 +20,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(id: params[:id])
+    @customer = current_customer
+    #binding.pry
   end
 
   def withdraw
-    @customer = Customer.find_by(id: params[:id])
-    @customer.update(is_valid: false)
+    @customer = current_customer
+    #binding.pry
+    @customer.update(validation: true)
     reset_session
     redirect_to root_path
   end

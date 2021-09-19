@@ -7,13 +7,13 @@ class Public::AddressesController < ApplicationController
     @addresses = current_customer.addresses
   end
 
-  def editcd
+  def edit
     @address = Address.find(params[:id])
   end
 
-  def creates
-    @address = Address.new(address_params)
-    @address.customer = current_customer.id
+  def create
+    @address = Address.new
+    @address.customer = current_customer
     if @address.save
       redirect_to public_addresses_path
     else
