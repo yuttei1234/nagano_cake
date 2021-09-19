@@ -23,17 +23,10 @@
 				<tbody>
 					<% @items.each do |item| %>
 						<tr>
-							<td>
-								<%= item.id %>
-							</td>
-							<td>
-								<%= link_to item.name, admin_item_path(item.id) %>
-							</td>
-							<td>
-								<%= (item.price*1.1) %>
-							</td>
-							<td>
-								<%= item.genre.name %>
+							<td><%= item.id %></td>
+							<td><%= link_to item.name, admin_item_path(item.id) %></td>
+							<td><%= (item.price*1.1) %></td>
+							<td><%= item.genre.name %>
 							</td>
 							<td>
 								<% if item.validation == true %>

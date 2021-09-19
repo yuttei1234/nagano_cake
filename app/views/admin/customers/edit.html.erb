@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="row">
+    <h5><%= "#{@customer.last_name} #{@customer.first_name}"%>さんの情報</h5>
+  </div>
+
+  <div class="row">
+    <%= form_for(@customer, url: admin_customer_path(@customer), class:"form-horizontal") do |f| %>
+      <div class="col-md-12">
+        <table>
+          <tbody>
+            <tr>
+              <td>会員ID</td>
+              <td><%= @customer.id%></td>
+            </tr>
+             <tr>
+              <td>氏名</td>
+              <td><%= f.text_field :last_name, class: "form-control" %></td>
+              <td><%= f.text_field :first_name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td><%= f.text_field :kata_last_name, class: "form-control" %></td>
+              <td><%= f.text_field :kata_first_name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td><%= f.text_field :postal_code, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= f.text_field :telephone_number, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <%= f.radio_button :validation, true %>
+                <%= f.label :validation, "有効", value: true %>
+              </td>
+              <td>
+                <%= f.radio_button :validation, false %>
+                <%= f.label :validation, "退会", value: false %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.submit "変更を保存", class:"btn btn-success offset-md-10" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
