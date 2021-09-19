@@ -8,6 +8,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    #binding.pry
     @address = Address.find(params[:id])
   end
 
