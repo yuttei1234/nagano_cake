@@ -1,11 +1,13 @@
 class HomesController < ApplicationController
+  before_action :authenticate_user!, except: :top
 
-def top
-  @genres = Genre.all
-end
+  def top
+    @items = Item.page(params[:page]).per(4)
+    @genres = Genre.all
+  end
 
 def about
-  @random = Item.order("RAND()").limit(4)
+
 end
 
 end

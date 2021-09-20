@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'layouts/genre_search_sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-10">
+      <div class="col-md-4">
+        <%= attachment_image_tag @item, :image, format: 'jpg', fallback: "logo.png", size: "245x245" %><br>
+      </div>
+      <div class="col-md-8">
+        <div>
+          <b><%= @item.name %></b><br>
+          <%= @item.introduction %><br>
+          <% if @item.validation == true %>
+            <%= (@item.price*1.1).floor %>  (税込)<br>
+          <% else %>
+            soldout<br>
+          <% end %>
+        </div>
+        <div>
+          <% if @item.validation == true %>
+            <%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.number_field :amount, placeholder: "個数選択", class: "btn btn-default", min: 1 %>
+              <%= f.submit 'カート入れる', class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

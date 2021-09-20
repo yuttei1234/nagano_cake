@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'layouts/genre_search_sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-10">
+      <h3>商品一覧<span style="font-size: 15px;">(全<%= @amount %>件)</span></h3>
+      <% @items.each do |item| %>
+        <div class="col-md-3 text-center itemindex">
+          <%= link_to public_item_path(item.id) do%>
+            <%= attachment_image_tag item, :image, format: 'jpeg', fallback: "logo.png", size: "150x150" %><br>
+
+            <%= item.name %><br>
+            <% if item.validation == true %>
+              <%= item.price %>円
+            <% end %>
+
+            <% if item.validation == true %>
+              販売中
+            <% else %>
+              売り切れ
+            <% end %>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
