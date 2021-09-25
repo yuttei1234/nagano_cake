@@ -10,7 +10,7 @@ class Admin::OrdersController < ApplicationController
 
   def create
     if @orders = Order.new(order)
-    @cart_items = Cart_items.where(customer_id: current_customer.id)
+    @cart_items = CartItem.where(customer_id: current_customer.id)
       @cart_items.each do |cart_item|
         @orders = Order.create(
         item_id: cart_item.item.id,

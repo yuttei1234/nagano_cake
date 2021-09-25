@@ -1,4 +1,4 @@
-class Cart_item < ApplicationRecord
+class CartItem < ApplicationRecord
 
   belongs_to :customers
   belongs_to :items
@@ -8,7 +8,7 @@ class Cart_item < ApplicationRecord
   end
 
   def total_price
-    items.to_a.sum { |item| item.total_price }
+    item.to_a.sum { |item| item.total_price }
   end
 
 end
