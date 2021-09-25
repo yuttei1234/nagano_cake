@@ -19,15 +19,6 @@ class Admin::OrdersController < ApplicationController
         price: cart_item.item.price)
     end
 
-    # 新規住所登録 (address登録コードを使用？)
-
-
-
-
-    # カート情報は登録後、削除。
-
-    cart_items.destroy_all
-
     redirect_to complete_public_orders_path
 
     else
