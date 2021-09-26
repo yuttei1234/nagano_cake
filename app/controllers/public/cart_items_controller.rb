@@ -33,7 +33,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy
     @cart_items= CartItem.find(params[:id])
-    if cart_items.destroy
+    if @cart_items.destroy
       redirect_to public_cart_items_path
     else
       redner :index
