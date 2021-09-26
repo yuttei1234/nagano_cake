@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20210920043102) do
     t.string   "postal_code"
     t.string   "address"
     t.string   "telephone_number"
-    t.boolean  "validation",             default: false
+    t.boolean  "validation",             defauplt: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_customers_on_email", unique: true

@@ -9,9 +9,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    if @orders = Order.new(order)
+    @orders = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    
+    if @order.save
       @cart_items.each do |cart_item|
         @orders = Order.create(
         item_id: cart_item.item.id,
@@ -19,19 +19,16 @@ class Public::OrdersController < ApplicationController
         amount: cart_item.amount,
         price: cart_item.item.price)
       end
-    # 新規住所登録 (address登録コードを使用)
+    # 新規住所登録時 (address登録コードを使用)
         @address = Address.create(
         customer_id: current_customer.id,
         name: params[:order][:name],
         postal_code: params[:order][:postal_code],
         address: params[:order][:address])
-
     # カート情報は登録後、削除
-    cart_items.destroy_all
-    redirect_to complete_public_orders_path
-    else
-      render :confirm
+      current_customer.cart_items.destroy_all
     end
+    redirect_to complete_public_orders_path
   end
 
   def show
@@ -40,29 +37,17 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @orders = Order.new(order_params)
-
-    #支払方法の選択
-      if params[:payment_select] == "0"
-        session[:customer] [:payment_method] = 0
-      elsif params[:payment_select] == "1"
-        session[:customer] [:payment_method] = 1
-      end
-    
+    @orders.payment_method = params[:order][:payment_method]
     #運送先の選択
       if params[:address_select] == "1"
-        session[:customer] [:postal_code] = current_customer.postal_code
-        session[:customer] [:address] = current_customer.address
-        session[:customer] [:name] = current_customer.name
+        @orders.postal_code = current_customer.postal_code
+        @orders.address = current_customer.address
+        @orders.name = current_customer.name
       elsif params[:address_select] == "2"
-        session[:customer] [:postal_code] = Address.find(params[:address_id]).postal_code
-        session[:customer] [:address] = Address.find(params[:address_id]).address
-        session[:customer] [:name] = Address.find(params[:address_id]).name
-      else 
-        session[:customer] [:postal_code] = Address.new(@orders).postal_code
-        session[:customer] [:address] = Address.new(@orders).address
-        session[:customer] [:name] = Address.new().name
+        @orders.postal_code = Address.find(params[:address_id]).postal_code
+        @orders.address = Address.find(params[:address_id]).address
+        @orders.name = Address.find(params[:address_id]).name
       end
-      redirect_to complete_public_orders_path      
   end
 
   def complete
