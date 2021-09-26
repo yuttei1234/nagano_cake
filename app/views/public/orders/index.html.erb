@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @order.each do |order| %>
+            <% @orders.each do |order| %>
               <tr>
                 <td><%= order.created_at.strfttime('%Y/%m/%d') %></td>
               </tr>

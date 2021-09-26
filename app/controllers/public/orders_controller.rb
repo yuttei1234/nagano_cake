@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   def create
     @orders = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    if @order.save
+    if @orders.save
       @cart_items.each do |cart_item|
         @orders = Order.create(
         item_id: cart_item.item.id,
@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @orders = Order.new(order_params)
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @orders.payment_method = params[:order][:payment_method]
     #運送先の選択
       if params[:address_select] == "1"
