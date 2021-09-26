@@ -14,6 +14,7 @@
             </tr>
           </thead>
           <tbody>
+            <% @num = 0 %>
             <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
@@ -22,7 +23,10 @@
               </td>
               <td class="text-left"><%= cart_item.item.with_tax_price %></td>
               <td class="text-left"><%= cart_item.amount %></td>
-              <td class="text-left"><%= cart_item.subtotal %></td>
+              <td class="text-left">
+                <%= (((cart_item.item.price) * (cart_item.amount)) * 1.1).floor %>
+                <% @num += (((cart_item.item.price) * (cart_item.amount)) * 1.1).floor %>
+              </td>
             </tr>
             <% end %>
           </tbody>
@@ -34,7 +38,7 @@
             </tr>
                <tr>
                 <th>商品合計</th>
-                <td><%= @cart_item.subtotal %></td>
+                <td><%= @num %></td>
               </tr>
                   <tr>
                   <th>請求金額</th>
@@ -59,7 +63,7 @@
         </table>
       </div>
         <div class="row">
-          <%= form_with model:@order url: public_orders_path, local:true do |f| %>
+          <%= form_with model:@orders, url: public_orders_path, local:true do |f| %>
             <%= f.hidden_field :postal_code, value: @order.postal_code %>
             <%= f.hidden_field :address, value: @order.address %>
             <%= f.hidden_field :name, value: @order.name %>
