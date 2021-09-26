@@ -2,10 +2,9 @@
   <div class="row">
     <h3>注文情報入力</h3>
   </div>
-
     <div class="row">
       <div class="form-horizontal">
-        <%= form_for (@order, url: confirm_public_orders_path) do |f| %>
+        <%= form_with model:@order, url: confirm_public_orders_path, local:true do |f| %>
           <div class="form-group">
             <div class="col-md-7">
               <b>支払方法</b>
@@ -59,7 +58,6 @@
                           <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
                         </div>
                        </div>
-
         <% end %>
       </div>
     </div>
