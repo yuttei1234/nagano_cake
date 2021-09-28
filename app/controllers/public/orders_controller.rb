@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+    @order_details = OrderDetail.all
   end
 
   def create
@@ -34,7 +35,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order= Order.find(params[:id])
-    @order_detail = OrderDetail.where(customer_id: current_customer.id)
+    @order_details = @order.order_details
   end
 
   def confirm
