@@ -8,16 +8,34 @@ ja:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
-
       status:
-        0: '入金待ち'
-        1: '入金確認'
-        2: '製作中'
-        3: '発送準備中'
-        4: '発送済み'
+        0: "入金待ち"
+        1: "入金確認"
+        2: "製作中"
+        3: "発送準備中"
+        4: "発送済み"
 
       making_status:
         0: '製作不可'
         1: '製作待ち'
         2: '製作中'
         3: '製作完了'
+
+# ja:
+#   enums:
+#     order:
+#       payment_method:
+#         credit_card: 'クレジットカード'
+#         transfer: '銀行振込'
+#       status:
+#         waiting: "入金待ち"
+#         confirm: "入金確認"
+#         progress: "製作中"
+#         prepare: "発送準備"
+#         sent: "発送済み"
+#     order_detail:
+#       product_status:
+#         impossible: "着手不可"
+#         waiting: "制作待ち"
+#         progress: "製作中"
+#         complete: "制作完了"

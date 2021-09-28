@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_items= CartItem.find(params[:id])
     if @cart_items.update(cart_item_params)
-      redirect_to public_cart_item_path
+      redirect_to public_cart_items_path
     else
       render :index
     end
