@@ -9,17 +9,17 @@ ja:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
       status:
-        0: "入金待ち"
-        1: "入金確認"
-        2: "製作中"
-        3: "発送準備"
-        4: "発送済み"
+        unpaid: "入金待ち"
+        paid: "入金確認"
+        making: "製作中"
+        ready: "発送準備"
+        shipped: "発送済み"
 
       making_status:
-        0: '製作不可'
-        1: '製作待ち'
-        2: '製作中'
-        3: '製作完了'
+        impossible: '製作不可'
+        waiting: '製作待ち'
+        making: '製作中'
+        finish: '製作完了'
 
 # ja:
 #   enums:

@@ -27,7 +27,7 @@
             </tr>
             <tr>
               <td>ステータス</td>
-              <td><%= @order.status %></td>
+              <td><%= @order.status_i18n %></td>
             </tr>
           </tbody>
         </table>
@@ -38,7 +38,13 @@
             <tbody>
               <tr>
                 <td>商品合計</td>
-                <td><%#= @order_details.price %></td>
+                  <% @num =0 %>
+                <td>
+                  <% @order_details.each do |order_detail| %>
+                  <% @num += (((order_detail.price) * 1.1 * (order_detail.amount))).floor %>
+                  <% end %>
+                  <%= @num %>                  
+                </td>
               </tr>
               <tr>
                 <td>配送料</td>

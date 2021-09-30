@@ -27,13 +27,15 @@
                   <%= order.name %>
                 </td>
               <% @num =0 %>
-              <% @order_details.each do |order_detail| %>
-                <td><%= order_detail.item.name %></td>
                 <td>
+              <% @order_details.each do |order_detail| %>
+                <%= order_detail.item.name %><br/>
                 <% @num += (((order_detail.price) * (order_detail.amount)) * 1.1).floor %>
-                <%= @num %>
-              </td>
               <% end %>
+                </td>
+                  <td>
+                    <%= @num %>
+                  </td>
                  <td><%= order.status_i18n %></td>
                 <td><%= link_to "表示する", public_order_path(order.id), class: "btn btn-primary btn-block" %></td>
               </tr>
