@@ -5,8 +5,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
-    @order_details = OrderDetail.all
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def create
@@ -15,11 +14,12 @@ class Public::OrdersController < ApplicationController
     @cart_items = CartItem.where(customer_id: current_customer.id)
     if @orders.save
       @cart_items.each do |cart_item|
-        @orders = OrderDetail.create(
-        item_id: cart_item.item.id,
-        order_id: @orders.id,
-        amount: cart_item.amount,
-        price: cart_item.item.price)
+        @order_details= OrderDetail.new
+        @order_details.item_id = cart_item.item.id
+        @order_details.order_id = @orders.id
+        @order_details.amount = cart_item.amount
+        @order_details.price = cart_item.item.price
+        @order_details.save
       end
     # 新規住所登録時 (address登録コードを使用)
         @address = Address.create(
@@ -27,6 +27,12 @@ class Public::OrdersController < ApplicationController
         name: params[:order][:name],
         postal_code: params[:order][:postal_code],
         addresses: params[:order][:address])
+        # @address= Address.new
+        # @address.customer_id = current_customer.id
+        # @address.name = current_customer.name
+        # @address.postal_code = current_customer.postal_code
+        # @address.addresses = current_customer.addresses
+        # @address.save
     # カート情報は登録後、削除
       current_customer.cart_items.destroy_all
     end
@@ -35,7 +41,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order= Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def confirm

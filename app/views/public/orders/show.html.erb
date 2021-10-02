@@ -43,7 +43,7 @@
                   <% @order_details.each do |order_detail| %>
                   <% @num += (((order_detail.price) * 1.1 * (order_detail.amount))).floor %>
                   <% end %>
-                  <%= @num %>                  
+                  <%= @num %>
                 </td>
               </tr>
               <tr>
@@ -85,5 +85,4 @@
             </table>
         </div>
       </div>
-
 </div>

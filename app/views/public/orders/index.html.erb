@@ -19,6 +19,7 @@
           </thead>
           <tbody>
             <% @orders.each do |order| %>
+            <% @order_details = OrderDetail.where(order_id: order.id) %>
               <tr>
                 <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                 <td>

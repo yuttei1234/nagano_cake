@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-   <div class="col-md-6 col-md-offset-2">
+   <div class="col-md-4 col-md-offset-2">
      <h3>注文履歴詳細</h3>
    </div>
   </div>
@@ -29,61 +29,69 @@
               <td><%= @order.payment_method_i18n %></td>
             </tr>
             <tr>
-              <td>ステータス</td>
-              <td><%= f.select :making_status, *[1..10] %></td>
+              <td>注文ステータス</td>
+              <%= form_with model:@orders, url: admin_admin_orders_path(order.id), local:true do |f| %>
+              <td><%= f.select :making_status, {'unpaid': 1, 'paid': 2, 'making':3, 'ready':4, 'shipped': 5}, { class: 'form-control', required: true } %></td>
+              <td><%= f.submit, "更新", class: "btn btn-success" %></td>
+              <% end %>
             </tr>
           </tbody>
         </table>
     </div>
-      <div class="col-md-4">
+      <div class="col-md-9">
         <h4>請求情報</h4>
           <table class="table table-hoever table-bordered">
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th>製作ステータス</th>
+              </tr>
+            </thead>
             <tbody>
+              <% @order_details.each do |order_detail| %>
               <tr>
-                <td>商品合計</td>
+                <td><%= order_detail.item.name %></td>
+                <td><%= order_detail.item.with_tax_price %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= (((order_detail.price) * (order_detail.amount)) * 1.1).floor %></td>
+                <%= form_with model:@order_details, url: admin_admin_orders_path(order.id), local:true do |f| %>
                 <td>
-                  
-                  
+                  <%= f.select :making_status_id, options_from_collection_for_select(OrderDetail.all, :id, :full_name) %>
+                  <%= f.hidden_field :making_status, value: @order_details.making_status %>
+                  <%= f.submit "更新", class: "btn btn-success" %>
                 </td>
+                <% end %>
               </tr>
-              <tr>
-                <td>配送料</td>
-                <td>800</td>
-              </tr>
-              <tr>
-                <td>ご請求額</td>
-                <td><%= @order.total_payment %></td>
-              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
-    </div>
-      <div class="row">
-        <div class="col-md-9">
-          <h4>注文内容</h4>
-            <table class="table table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th>商品</th>
-                  <th>単価(税込)</th>
-                  <th>個数</th>
-                  <th>小計</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @order_details.each do |order_detail| %>
-                <tr>
-                  <td><%= order_detail.item.name %></td>
-                  <td><%= order_detail.item.with_tax_price %></td>
-                  <td><%= order_detail.amount %></td>
-                  <td>
-                    <%= (((order_detail.price) * (order_detail.amount)) * 1.1).floor %>
-                  </td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
+        <div class="col-md-3">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>商品合計</td>
+                  <% @num =0 %>
+                <td>
+                  <% @order_details.each do |order_detail| %>
+                  <% @num += (((order_detail.price) * 1.1 * (order_detail.amount))).floor %>
+                  <% end %>
+                  <%= @num %>
+                </td>
+              </tr>
+              <tr>
+                <td>送料</td>
+                <td><%= @order.shipping_cost %>円</td>
+              </tr>   
+              <tr>
+                <td>請求金額合計</td>
+                <td><%= @order.total_payment %>円</td>
+              </tr>            
+            </tbody>            
+          </table>
         </div>
-      </div>
-
+    </div>
 </div>
