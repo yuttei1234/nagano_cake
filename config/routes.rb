@@ -37,8 +37,8 @@ Rails.application.routes.draw do
 
   #以下、admin関連のコントローラー/アクション設定
 
-  get '/admin', to: 'admin/#top'
   namespace :admin do
+  get '/', to: 'homes#top'
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
