@@ -27,12 +27,6 @@ class Public::OrdersController < ApplicationController
         name: params[:order][:name],
         postal_code: params[:order][:postal_code],
         addresses: params[:order][:address])
-        # @address= Address.new
-        # @address.customer_id = current_customer.id
-        # @address.name = current_customer.name
-        # @address.postal_code = current_customer.postal_code
-        # @address.addresses = current_customer.addresses
-        # @address.save
     # カート情報は登録後、削除
       current_customer.cart_items.destroy_all
     end
@@ -54,9 +48,9 @@ class Public::OrdersController < ApplicationController
         @orders.address = current_customer.address
         @orders.name = current_customer.last_name + current_customer.first_name
       elsif params[:order][:shippingaddress] == "2"
-        @orders.postal_code = Address.find(params[:address_id]).postal_code
-        @orders.address = Address.find(params[:address_id]).address
-        @orders.name = Address.find(params[:address_id]).name
+        @orders.postal_code = Address.find(params[:order][:address_id]).postal_code
+        @orders.address = Address.find(params[:order][:address_id]).addresses
+        @orders.name = Address.find(params[:order][:address_id]).name
       else params[:order][:shippingaddress]
         @orders.postal_code = params[:order][:postal_code]
         @orders.address = params[:order][:address]
