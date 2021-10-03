@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
-    <h2>会員一覧</h2>
+    <h4>会員一覧</h4>
   </div>
   <div class="row">
-    <div class="col-md-10">
-      <table class="table-responsive">
-        <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-
+    <div class="col-md-12">
+      <table class="customertable">
+        <thead>
+           <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>         
+        </thead>
         <tdody>
           <% @customers.each do |customer| %>
             <tr>

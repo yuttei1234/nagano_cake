@@ -55,26 +55,26 @@
                 <%= f.text_field :name, class: "form-control" %>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group name-left">
               <div class= "col-md-1"></div>
               <div class= "col-md-7">
                 <%= f.text_field :introduction, class: "form-control" %>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group name-left">
               <div class= "col-md-1"></div>
               <div class= "col-md-7">
                 <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "form-control" %>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group name-left">
               <div class= "col-md-1"></div>
               <div class= "col-md-7">
                 <%= f.text_field :price %>円
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group name-left">
               <div class= "col-md-1"></div>
               <div class= "col-md-7">
                 <%= f.select :validation, {

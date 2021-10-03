@@ -7,7 +7,7 @@
   <div class="row">
     <%= form_for(@customer, url: admin_customer_path(@customer), class:"form-horizontal") do |f| %>
       <div class="col-md-12">
-        <table>
+        <table class="customertable2">
           <tbody>
             <tr>
               <td>会員ID</td>
@@ -51,7 +51,7 @@
               </td>
             </tr>
             <tr>
-              <td><%= f.submit "変更を保存", class:"btn btn-success offset-md-10" %></td>
+              <td><%= f.submit "変更を保存", class:"btn btn-success mt-3 offset-md-10" %></td>
             </tr>
           </tbody>
         </table>

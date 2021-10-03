@@ -3,24 +3,27 @@
     <div class="col-md-12">
       <h3 class="title_genre">ジャンル追加・一覧</h3>
     </div>
+  </div>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
           <div class="form-group form-horizontal">
             <%= form_for(@genre, url: admin_genres_path) do |f| %>
-              <%= f.label :name, "ジャンル", class: "genre_name" %>
-              <%= f.text_field :name, autofocus: true %>
-              <%= f.submit "新規登録", class: "btn btn-success genre_registration" %>
+            <tr>
+              <td><%= f.label :name, "ジャンル", class: "genre_name" %></td>
+              <td><%= f.text_field :name, autofocus: true %></td>
+              <td><%= f.submit "新規登録", class: "btn btn-success genre_registration" %></td>
+            </tr>
           </div>
         </div>
         <% end %>
       </div>
 
         <div class="row">
-          <div class="col-md-12">
-            <table class="table table-bordered">
+          <div class="col-md-4">
+            <table class="table">
               <tr>
-                <th>ジャンル</th>
+                <th class="mt-5">ジャンル</th>
               </tr>
                 <% @genres.each do |genre| %>
                 <tr>
@@ -31,5 +34,4 @@
             </table>
           </div>
         </div>
-  </div>
 </div>
