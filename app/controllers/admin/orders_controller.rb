@@ -3,11 +3,12 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @order_details = OrderDetail.all
+    @orders = Order.page(params[:page]).reverse_order.per(10)
   end
 
   def show
-    @order= Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id: @order.id)
+    @order = Order.find(params[:order])
+    @order_detail = @order.order_detail
   end
 
   def update

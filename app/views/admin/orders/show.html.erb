@@ -32,7 +32,7 @@
               <td>注文ステータス</td>
               <%= form_with model:@orders, url: admin_admin_orders_path(order.id), local:true do |f| %>
               <td><%= f.select :making_status, {'unpaid': 1, 'paid': 2, 'making':3, 'ready':4, 'shipped': 5}, { class: 'form-control', required: true } %></td>
-              <td><%= f.submit, "更新", class: "btn btn-success" %></td>
+              <td><%= f.submit "更新", class: "btn btn-success" %></td>
               <% end %>
             </tr>
           </tbody>
@@ -85,12 +85,12 @@
               <tr>
                 <td>送料</td>
                 <td><%= @order.shipping_cost %>円</td>
-              </tr>   
+              </tr>
               <tr>
                 <td>請求金額合計</td>
                 <td><%= @order.total_payment %>円</td>
-              </tr>            
-            </tbody>            
+              </tr>
+            </tbody>
           </table>
         </div>
     </div>
