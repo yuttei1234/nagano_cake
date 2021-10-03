@@ -46,9 +46,9 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:index, :show, :edit, :update]
 
-  get 'admin/orders' =>'orders#show'
-  patch 'admin/orders' =>'orders#update'
-  patch 'admin/order_details' =>'order_details#update'
+  get 'admin/orders/:id' =>'orders#show' ,  as: "admin_orders"
+  patch 'admin/orders/:id' =>'orders#update'
+  patch 'admin/order_details/:id' =>'order_details#update' , as: "admin_order_details"
 
   end
 

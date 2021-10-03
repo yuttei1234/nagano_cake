@@ -22,7 +22,7 @@
               <td><%= order.name %></td>
                 <% @num =0 %>
               <td>
-                <% @order_details.each do |order_detail| %>
+                <% order.order_details.each do |order_detail| %>
                 <% @num += order_detail.amount %>
                 <% end %>
                 <%= @num %>

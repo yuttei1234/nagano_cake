@@ -18,11 +18,11 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= link_to admin_admin_orders_path(@order.id) do %><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %><% end %></td>
+              <td><%= link_to admin_admin_orders_path(order.id) do %><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %><% end %></td>
               <td><%= order.name %></td>
                 <% @num =0 %>
               <td>
-                <% @order_details.each do |order_detail| %>
+                <% order.order_details.each do |order_detail| %>
                 <% @num += order_detail.amount %>
                 <% end %>
                 <%= @num %>
