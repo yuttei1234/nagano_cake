@@ -10,7 +10,7 @@
           <tbody>
             <tr>
              <td>購入者</td>
-             <td><%= @order.name %></td>
+             <td><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
             </tr>
             <tr>
               <td>注文日</td>
@@ -31,7 +31,7 @@
             <tr>
               <td>注文ステータス</td>
               <%= form_with model:@order, url: admin_admin_orders_path(@order.id), local:true do |f| %>
-              <td><%= f.select :making_status, {'unpaid': 0, 'paid': 1, 'making': 2, 'ready': 3, 'shipped': 4}, { class: 'form-control', required: true } %></td>
+              <td><%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
               <td><%= f.submit "更新", class: "btn btn-success" %></td>
               <% end %>
             </tr>
@@ -51,14 +51,14 @@
               </tr>
             </thead>
             <tbody>
-              <% @order_details.each do |order_detail| %>
+              <% @order.order_details.each do |order_detail| %>
               <tr>
                 <td><%= order_detail.item.name %></td>
                 <td><%= order_detail.item.with_tax_price %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= (((order_detail.price) * (order_detail.amount)) * 1.1).floor %></td>
-                <%= form_with model:@order, url: admin_admin_order_details_path(@order.id), local:true do |f| %>
-                <td><%= f.select :making_status_id, {'impossible': 0, 'waiting': 1, 'making': 2, 'finish': 3 }, { class: 'form-control', required: true } %></td>
+                <%= form_with model:order_detail, url: admin_admin_order_details_path(order_detail.id), local:true do |f| %>
+                <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
                 <td><%= f.submit "更新", class: "btn btn-success" %></td>
                 <% end %>
               </tr>
@@ -73,7 +73,7 @@
                 <td>商品合計</td>
                   <% @num =0 %>
                 <td>
-                  <% @order_details.each do |order_detail| %>
+                  <% @order.order_details.each do |order_detail| %>
                   <% @num += (((order_detail.price) * 1.1 * (order_detail.amount))).floor %>
                   <% end %>
                   <%= @num %>円
