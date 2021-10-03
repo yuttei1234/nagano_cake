@@ -19,6 +19,18 @@ class Customers::SessionsController < Devise::SessionsController
   # end
 
   # protected
+  
+  def reject_user
+    @customer = Customer.find_by(name: params[:customer][:last_name][:first_name])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
+        redirect_to new_customer_registration_path
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
+  
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -42,11 +42,11 @@
             <tr>
               <td>会員ステータス</td>
               <td>
-                <%= f.radio_button :validation, true %>
+                <%= f.radio_button :validation, false %>
                 <%= f.label :validation, "有効", value: true %>
               </td>
               <td>
-                <%= f.radio_button :validation, false %>
+                <%= f.radio_button :validation, true %>
                 <%= f.label :validation, "退会", value: false %>
               </td>
             </tr>

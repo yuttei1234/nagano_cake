@@ -7,25 +7,25 @@
       <table class="table-responsive">
         <tr>
           <th>会員ID</th>
-          <th>氏名</th>          
-          <th>メールアドレス</th>          
-          <th>ステータス</th>          
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
         </tr>
-        
+
         <tdody>
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></td>           
-              <td><%= customer.email %></td>           
+              <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></td>
+              <td><%= customer.email %></td>
               <td>
-                <% if customer.validation == true %>
+                <% if customer.validation == false %>
 									<%= "有効" %>
 								    <% else %>
 									<%= "退会" %>
 								<% end %>
-							</td>            
-            </tr>  
+							</td>
+            </tr>
             <% end %>
         </tdody>
       </table>
