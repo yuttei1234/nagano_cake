@@ -3,8 +3,8 @@
     <div class="col-md-2 mr-4">
       <%= render 'layouts/genre_search_sidebar', genres: @genres %>
     </div>
-      <div class="col-md-10 col-md-offset-1 mt-5">
-        <div class="center-block">
+      <div class="col-md-9 col-md-offset-1 m-4">
+        <div class="center-block m-5">
           <p class="text-center">ようこそ、ながのCAKEへ！</p>
           <p class="text-center">このサイトは、ケーキ販売のECサイトになります。</p>
           <p class="text-center">会員ではない方も商品の閲覧はできますが、</p>
@@ -12,19 +12,19 @@
         </div>
       </div>
     </div>
-       <div class="row mt-5 align-text-top">
-        <div class="col-md-12">
-            <h2>新着商品</h2>            
-              <div class="col-md-3 d-flex justify-content-between">
+       <div class="row">
+         <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h2>新着商品</h2>
+              <div class="d-flex justify-content-between">
                 <% @items.each do |item| %>
                   <%= link_to public_item_path(item.id) do %>
-                  <%= attachment_image_tag item, :image, format: 'jpg', class: "pull-left img-responsive", fallback: 'logo.png', size: '180x180' %>
-                  <%= item.name %><br>
-                  <%= item.price %>
+                  <%= attachment_image_tag item, :image, format: 'jpg', class: "pull-left img-responsive", fallback: 'logo.png', size: '180x180' %></br>
+                  <%= item.name %></br>
+                  <%= item.price %></br>
                   <% end %>
                 <% end %>
               </div>
-          </div>
           <div class="nav-links float-right">
             <%= link_to "全ての商品を見る > ", public_items_path %>
           </div>

@@ -5,3 +5,12 @@
 .itemindex {
   display: inline-block;
 }
+
+.page.current, .page, .next, .last, .first, .prev {
+  margin-right: 10px;
+}
+
+table.itemtable {
+  width: 500px;
+  height: 250px;
+}
